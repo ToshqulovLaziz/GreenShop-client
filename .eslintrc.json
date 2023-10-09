@@ -2,6 +2,7 @@
     "env": {
         "browser": true,
         "es2021": true,
+        "node": 1,
         "jest": true
     },
     "extends": [
@@ -22,7 +23,15 @@
     ],
     "rules": {
         "@typescript-eslint/restrict-plus-operands": "error",
-        "@typescript-eslint/quote": ["error", "double", {"avoidEscape": true}],
+        "@typescript-eslint/quotes": [
+            "error",
+            "double",
+            {
+              "avoidEscape": true,
+              "allowTemplateLiterals": true
+            }
+          ],
+        "quotes": [2, "double", { "avoidEscape": true }],
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/semi": "off"
     },
