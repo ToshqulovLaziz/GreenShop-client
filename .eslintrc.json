@@ -21,8 +21,14 @@
         "prettier"
     ],
     "rules": {
+        "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/quote": ["error", "double", {"avoidEscape": true}],
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/semi": "off"
-    }
+    },
+    "overrides": [
+        {
+          "files": ["src/**/*.ts", "src/**/*.tsx"]
+        }
+      ]
 }
