@@ -4,6 +4,7 @@ import {
   BellOutlined,
   ShoppingCartOutlined,
   LoginOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
 
 const Navbar: FC = () => {
@@ -17,11 +18,11 @@ const Navbar: FC = () => {
           alt="Logo"
         />
       </div>
-      <div className="flex gap-6">
+      <div className="flex gap-6 max-sm:hidden">
         <h3 className="cursor-pointer">Home</h3>
         <h3 className="cursor-pointer">Blog</h3>
       </div>
-      <div className="flex gap-6 items-center">
+      <div className="flex gap-6 items-center max-sm:hidden">
         <SearchOutlined className="text-[23px] cursor-pointer" />
         <BellOutlined className="text-[23px] cursor-pointer" />
         <ShoppingCartOutlined className="text-[23px] cursor-pointer" />
@@ -29,6 +30,11 @@ const Navbar: FC = () => {
           <LoginOutlined className="text-[23px]" />
           Login
         </button>
+      </div>
+      <div className="gap-6 items-center hidden max-sm:flex">
+        <SearchOutlined className="text-[23px] cursor-pointer" />
+        <ShoppingCartOutlined className="text-[23px] cursor-pointer" />
+        <MenuOutlined className="text-[23px] cursor-pointer" />
       </div>
     </div>
   );
