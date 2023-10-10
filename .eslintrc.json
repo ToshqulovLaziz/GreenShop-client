@@ -2,7 +2,6 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "node": 1,
         "jest": true
     },
     "extends": [
@@ -33,7 +32,13 @@
           ],
         "quotes": [2, "double", { "avoidEscape": true }],
         "react/react-in-jsx-scope": "off",
-        "@typescript-eslint/semi": "off"
+        "@typescript-eslint/semi": "off",
+        "prettier/prettier": [
+            "error",
+            {
+              "doubleQuote": true
+            }
+          ]
     },
     "overrides": [
         {
