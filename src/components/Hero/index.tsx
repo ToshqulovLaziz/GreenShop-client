@@ -1,16 +1,15 @@
 import { type FC } from "react";
 import { Link } from "react-router-dom";
 import { Carousel } from "antd";
-import "./hero.scss";
 
 const Hero: FC = () => {
   return (
     <>
-      <section className="hero w-[80%] mx-auto">
+      <section className="hero w-[80%] mx-auto mt-[12px] mb-[26px] pb-[30px] bg-[#f5f5f5]">
         <Carousel autoplay>
           <div>
             <div className="flex justify-between items-center">
-              <div className="hero__start max-w-3xl">
+              <div className="hero__start max-w-3xl pt-[68px] ps-[40px]">
                 <p className="text-base m-0">WELCOME TO GREENSHOP</p>
                 <h1 className="text-8xl font-black text-[#3d3d3d] max-2xl:text-6xl max-lg:text-5xl max-md:text-2xl">
                   LET{"'"}S MAKE A BETTER{" "}
@@ -48,7 +47,7 @@ const Hero: FC = () => {
           </div>
           <div>
             <div className="flex justify-between items-center">
-              <div className="hero__start max-w-3xl">
+              <div className="hero__start max-w-3xl pt-[68px] ps-[40px]">
                 <p className="text-base m-0">WELCOME TO GREENSHOP</p>
                 <h1 className="text-8xl font-black text-[#3d3d3d] max-2xl:text-6xl max-lg:text-5xl max-md:text-2xl">
                   LET{"'"}S LIVE IN A BETTER{" "}
@@ -88,7 +87,7 @@ const Hero: FC = () => {
           </div>
           <div>
             <div className="flex justify-between items-center">
-              <div className="hero__start max-w-3xl">
+              <div className="hero__start max-w-3xl pt-[68px] ps-[40px]">
                 <p className="text-base m-0">WELCOME TO GREENSHOP</p>
                 <h1 className="text-8xl font-black text-[#3d3d3d] max-2xl:text-6xl max-lg:text-5xl max-md:text-2xl">
                   LET{"'"}S OBSERVE A BETTER{" "}
