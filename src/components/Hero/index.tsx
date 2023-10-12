@@ -1,29 +1,14 @@
 import { type FC } from "react";
 import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Carousel } from "antd";
 import "./hero.scss";
 
 const Hero: FC = () => {
   return (
     <>
-      <section className="hero  flex w-[80%] mx-auto">
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Autoplay, Pagination, Navigation]}
-        >
-          <SwiperSlide>
+      <section className="hero w-[80%] mx-auto">
+        <Carousel autoplay>
+          <div>
             <div className="flex justify-between items-center">
               <div className="hero__start max-w-3xl">
                 <p className="text-base m-0">WELCOME TO GREENSHOP</p>
@@ -60,8 +45,8 @@ const Hero: FC = () => {
                 />
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div>
             <div className="flex justify-between items-center">
               <div className="hero__start max-w-3xl">
                 <p className="text-base m-0">WELCOME TO GREENSHOP</p>
@@ -100,8 +85,8 @@ const Hero: FC = () => {
                 />
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div>
             <div className="flex justify-between items-center">
               <div className="hero__start max-w-3xl">
                 <p className="text-base m-0">WELCOME TO GREENSHOP</p>
@@ -140,8 +125,8 @@ const Hero: FC = () => {
                 />
               </div>
             </div>
-          </SwiperSlide>
-        </Swiper>
+          </div>
+        </Carousel>
       </section>
     </>
   );
