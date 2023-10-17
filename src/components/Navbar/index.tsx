@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import SiteMap from "./SiteMap";
 import {
   SearchOutlined,
   BellOutlined,
@@ -6,10 +7,14 @@ import {
   LoginOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
+import { useReduxDispatch } from "../../hooks/useRedux";
+import { setSiteMapModalVisibilty } from "../../redux/modalSlice";
 
 const Navbar: FC = () => {
+  const dispatch = useReduxDispatch();
   return (
     <div className="w-[80%] m-auto p-[32px] flex justify-between items-center border-b-2 border-bg-[#46a358]">
+      <SiteMap />
       <div>
         <img
           src={
@@ -34,7 +39,10 @@ const Navbar: FC = () => {
       <div className="gap-6 items-center hidden max-sm:flex">
         <SearchOutlined className="text-[23px] cursor-pointer" />
         <ShoppingCartOutlined className="text-[23px] cursor-pointer" />
-        <MenuOutlined className="text-[23px] cursor-pointer" />
+        <MenuOutlined
+          className="text-[23px] cursor-pointer"
+          onClick={() => dispatch(setSiteMapModalVisibilty())}
+        />
       </div>
     </div>
   );

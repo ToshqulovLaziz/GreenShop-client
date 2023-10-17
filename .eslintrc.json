@@ -33,12 +33,9 @@
         "quotes": [2, "double", { "avoidEscape": true }],
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/semi": "off",
-        "prettier/prettier": [
-            "error",
-            {
-              "doubleQuote": true
-            }
-          ]
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
     },
     "overrides": [
         {
