@@ -2,6 +2,7 @@ import { Modal } from "antd";
 import type { FC } from "react";
 import { useReduxDispatch, useReduxSelector } from "../../../hooks/useRedux";
 import { setSiteMapModalVisibilty } from "../../../redux/modalSlice";
+import { LoginOutlined } from "@ant-design/icons";
 const SiteMap: FC = () => {
   const dispatch = useReduxDispatch();
   const { siteMapModalVisibilty } = useReduxSelector((state) => state.modal);
@@ -25,6 +26,10 @@ const SiteMap: FC = () => {
         >
           Blog
         </h3>
+        <button className="bg-[#46a358] text-white flex justify-center gap-2 rounded-md items-center w-[128px] h-[36px] mx-auto">
+          <LoginOutlined className="text-[23px]" />
+          Login
+        </button>
       </div>
     </Modal>
   );

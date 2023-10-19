@@ -6,7 +6,7 @@ const Hero: FC = () => {
   return (
     <>
       <section className="hero w-[80%] mx-auto mt-[12px] mb-[26px] pb-[30px] bg-[#f5f5f5]">
-        <Carousel autoplay>
+        <Carousel autoplay autoplaySpeed={3000}>
           <div>
             <div className="flex justify-between items-center">
               <div className="hero__start max-w-3xl pt-[68px] ps-[40px]">

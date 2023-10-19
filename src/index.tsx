@@ -1,15 +1,13 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
 import ProviderConfig from "./tools/provider";
+import Root from "./Root";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
 root.render(
   <ProviderConfig>
-    <Navbar />
-    <Hero />
+    <Root />
   </ProviderConfig>,
 );
