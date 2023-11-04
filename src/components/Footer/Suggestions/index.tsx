@@ -1,7 +1,40 @@
 import type { FC } from "react";
+import { useState, useEffect, useRef } from "react";
 import { offers } from "../../../utils/offer";
+import axios from "axios";
 
 const Suggestions: FC = () => {
+  const [email, setEmail] = useState<string | undefined>(undefined);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+
+  const handleSubmit = (evt: React.FormEvent) => {
+    evt.preventDefault();
+    const emailValue = emailRef.current?.value;
+    if (emailValue !== undefined) {
+      setEmail(emailValue);
+    }
+  };
+  useEffect(() => {
+    if (email) {
+      axios
+        .post(
+          "https://greenshop.abduvoitov.com/api/features/email-subscribe?access_token=6519a32b5bf6635ccba4f9ad",
+          { email },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [email]);
+
   return (
     <>
       <section className="bg-[#f5f5f5]">
@@ -28,13 +61,17 @@ const Suggestions: FC = () => {
             <h3 className="font-bold text-base mt-[17px] mb-[9px]">
               Would you like to join newsletters?
             </h3>
-            <form className="flex w-full h-[40px] mb-[17px]">
+            <form
+              className="flex w-full h-[40px] mb-[17px]"
+              onSubmit={(evt) => handleSubmit(evt)}
+            >
               <input
                 className="h-full w-4/5 rounded-s-xl pl-[11px] placeholder:font-light"
                 type="email"
                 placeholder="enter your email address..."
+                ref={emailRef}
               />
-              <button className="bg-[#46A358] flex rounded-md items-center justify-center gap-1 text-base text-white h-full w-1/5 rounded-none rounded-e-xl">
+              <button className="bg-[#46A358] flex rounded-md items-center justify-center gap-1 text-base text-white h-full w-1/5 rounded-e-xl">
                 Join
               </button>
             </form>

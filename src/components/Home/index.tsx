@@ -1,12 +1,12 @@
 import type { FC } from "react";
 import Hero from "./Hero";
-import Dashboard from "./Dashboard";
+import MainCategory from "./MainCategory";
 
 const Home: FC = () => {
   return (
     <>
       <Hero />
-      <Dashboard />
+      <MainCategory />
     </>
   );
 };

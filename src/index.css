@@ -2,39 +2,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.code-box-demo .ant-slider {
-    margin-bottom: 16px;
-  }
-  
-  .slider-handle-color-focus-shadow {
-    border-color: brown !important;
-    background-color: chartreuse !important;
-    color: red !important;
-    --antd-wave-shadow-color: red !important;
-  }
-  
-  .ant-slider-handle {
-    border-color: brown !important;
-    background-color: rgb(15, 15, 15) !important;
-  
-    --antd-wave-shadow-color: red !important;
-  }
-  
-  .ant-slider-handle:focus {
-    border-color: brown !important;
-    background-color: rgb(15, 15, 15) !important;
-  
-    --antd-wave-shadow-color: red !important;
-  }
-  .ant-slider-handle-dragging {
-    border-color: brown !important;
-    background-color: chartreuse !important;
-    --antd-wave-shadow-color: red !important;
-    outline: none;
-  }
-  
-  .ant-slider-handle-click-focused:hover {
-    background-color: rgb(0, 0, 0) !important;
-    border: rgb(0, 0, 0) !important;
-    --antd-wave-shadow-color: red !important;
-  }
+
+
+.slick-dots li button {
+  background-color: #46a358 !important;
+  opacity: 30%;
+}
+.slick-active button {
+  background-color: #46a358 !important;
+}
+
+.ant-slider-track {
+  border: 2px solid #46a358;
+}
+
+.ant-slider .ant-slider-handle::after {
+  box-shadow: 0 0 0 2px #46a358;
+}
+
+.ant-slider .ant-slider-handler-1::after:hover {
+  box-shadow: 0 0 0 2px #46a358;
+}
