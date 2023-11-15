@@ -2,12 +2,15 @@
 import type { FC } from "react";
 import { Select } from "antd";
 import { typeHeaders } from "../../../../../utils/type";
-interface HeadersProps {
-  active_type: string;
-  active_sort: string;
-  setParams: Function;
-}
-const Headers: FC<HeadersProps> = ({ active_type, active_sort, setParams }) => {
+import { useSearchParams } from "react-router-dom";
+
+const Headers: FC = () => {
+  const [params, setParams] = useSearchParams();
+  const active_type: string = String(params.get("type") ?? "all-plants");
+  const active_sort: string = String(params.get("sort") ?? "default-sorting");
+  const range_min: string = String(params.get("range-min") ?? 0);
+  const range_max: string = String(params.get("range-max") ?? 1000);
+  const category: string = String(params.get("category") ?? "house-plants");
   return (
     <div className="flex w-full justify-between items-center">
       <div className="flex gap-8 p-[5px]">
@@ -19,7 +22,13 @@ const Headers: FC<HeadersProps> = ({ active_type, active_sort, setParams }) => {
                 "text-[#46A358] border-b-2 border-[#46a358] pb-1"
               }`}
               onClick={() => {
-                setParams({ type: item.value });
+                setParams({
+                  category,
+                  range_min,
+                  range_max,
+                  sort: active_sort,
+                  type: item.value,
+                });
               }}
             >
               {item.subtitle}
@@ -39,7 +48,13 @@ const Headers: FC<HeadersProps> = ({ active_type, active_sort, setParams }) => {
           ]}
           onChange={(selectedOption) => {
             if (typeof selectedOption === "string") {
-              setParams({ sort: selectedOption });
+              setParams({
+                category,
+                range_min,
+                range_max,
+                sort: selectedOption,
+                type: active_type,
+              });
             }
           }}
         />

@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { useSearchParams } from "react-router-dom";
 import Headers from "./Headers";
 import Card from "./Card";
+import useLoader from "../../../../generic/loader";
 
 interface DataItemType {
   title?: string;
@@ -12,18 +13,17 @@ interface DataItemType {
   main_image?: string;
 }
 const FlowerContainer: FC = () => {
+  const { flowers_loader } = useLoader();
   const [params, setParams] = useSearchParams();
 
   const category: string = String(params.get("category") ?? "house-plants");
+  const range_min: string = String(params.get("range_min") ?? 0);
+  const range_max: string = String(params.get("range_max") ?? 1000);
   const active_type: string = String(params.get("type") ?? "all-plants");
   const active_sort: string = String(params.get("sort") ?? "default-sorting");
-  const rangeMin = Number(params.get("range-min") ?? 0);
-  const rangeMax = Number(params.get("range-max") ?? 1000);
 
   const { data, isLoading } = useQuery(
-    [
-      `/flowers/${category}/${active_sort}/${active_type}/${rangeMin}/${rangeMax}`,
-    ],
+    [`/category/${category}?range_min=${range_min}&range_max=${range_max}`],
     () => {
       return axios
         .get(
@@ -31,10 +31,10 @@ const FlowerContainer: FC = () => {
           {
             params: {
               access_token: "6519a32b5bf6635ccba4f9ad",
-              sort: active_sort,
-              type: active_type,
-              range_min: rangeMin,
-              range_max: rangeMax,
+              range_min,
+              range_max,
+              active_sort,
+              active_type,
             },
           },
         )
@@ -49,16 +49,13 @@ const FlowerContainer: FC = () => {
   return (
     <>
       <div className="flex flex-col gap-8 w-full">
-        <Headers
-          active_type={active_type}
-          active_sort={active_sort}
-          setParams={setParams}
-        />
+        <Headers />
         <div className="grid grid-cols-3 gap-4 max-sm:grid-cols-2">
-          {data?.length > 0 &&
-            data?.map((item: DataItemType) => (
-              <Card key={item._id} {...item} isLoading={isLoading} />
-            ))}
+          {isLoading
+            ? flowers_loader()
+            : data?.map((item: DataItemType, _id: number) => (
+                <Card key={item._id} {...item} isLoading={isLoading} />
+              ))}
         </div>
       </div>
     </>

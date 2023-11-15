@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { Skeleton } from "antd";
 import {
   SearchOutlined,
   ShoppingCartOutlined,
@@ -15,9 +14,6 @@ interface DataItemType {
 }
 
 const Card: FC<DataItemType> = ({ main_image, title, price, isLoading }) => {
-  if (isLoading) {
-    return <Skeleton.Image />;
-  }
   return (
     <div>
       <div className="group h-[300px] bg-[#f5f5f5] flex justify-center items-center flex-col relative">

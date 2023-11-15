@@ -22,9 +22,26 @@ const useLoader = () => {
       </div>
     );
   };
+  const flowers_loader = (count?: number) => {
+    count = count ?? 9;
+    return Array.from({ length: count }).map((_, id) => (
+      <div key={id}>
+        <div className="group h-[300px] bg-[#f5f5f5] flex justify-center items-center flex-col relative">
+          <Skeleton.Image className="w-4/5" active={true} />
+        </div>
+        <h3 className="font-normal cursor-pointer mt-[12px]">
+          <Skeleton.Input active={true} />
+        </h3>
+        <span className="text-[#46A358] font-bold">
+          <Skeleton.Button active={true} />
+        </span>
+      </div>
+    ));
+  };
   return {
     category_loader,
     discount_loader,
+    flowers_loader,
   };
 };
 
