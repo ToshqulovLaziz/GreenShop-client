@@ -8,10 +8,13 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import { useReduxDispatch } from "../../hooks/useRedux";
-import { setSiteMapModalVisibilty } from "../../redux/modalSlice";
+import { setAuthModal, setSiteMapModalVisibilty } from "../../redux/modalSlice";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
 
 const Navbar: FC = () => {
+  const userData = useAuthUser()();
+  const isAuthed = useIsAuthenticated()();
   const dispatch = useReduxDispatch();
   const navigate = useNavigate();
   return (
@@ -39,9 +42,18 @@ const Navbar: FC = () => {
           <SearchOutlined className="text-[23px] cursor-pointer" />
           <BellOutlined className="text-[23px] cursor-pointer" />
           <ShoppingCartOutlined className="text-[23px] cursor-pointer" />
-          <button className="bg-[#46a358] text-white flex justify-center gap-2 rounded-md items-center w-[98px] h-[36px]">
-            <LoginOutlined className="text-[23px]" />
-            Login
+          <button
+            onClick={() => dispatch(setAuthModal())}
+            className="bg-[#46a358] text-white flex justify-center gap-2 rounded-md items-center w-[98px] h-[36px]"
+          >
+            {isAuthed ? (
+              userData?.name
+            ) : (
+              <>
+                <LoginOutlined className="text-[23px]" />
+                Login
+              </>
+            )}
           </button>
         </div>
         <div className="gap-6 items-center hidden max-sm:flex">

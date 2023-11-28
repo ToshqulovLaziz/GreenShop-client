@@ -14,7 +14,7 @@ interface DataItemType {
 }
 const FlowerContainer: FC = () => {
   const { flowers_loader } = useLoader();
-  const [params, setParams] = useSearchParams();
+  const [params] = useSearchParams();
 
   const category: string = String(params.get("category") ?? "house-plants");
   const range_min: string = String(params.get("range_min") ?? 0);
