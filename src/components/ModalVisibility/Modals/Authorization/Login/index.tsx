@@ -7,10 +7,7 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { useSignIn } from "react-auth-kit";
-import {
-  useReduxDispatch,
-  useReduxSelector,
-} from "../../../../../hooks/useRedux";
+import { useReduxDispatch } from "../../../../../hooks/useRedux";
 import {
   setAuthModal,
   setGoogleVerification,
@@ -25,7 +22,6 @@ const Login: FC = () => {
   const dispatch = useReduxDispatch();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [api, contextHolder] = notification.useNotification();
-  const { authModal } = useReduxSelector((state) => state.modal);
   const onFinish = (evt: { email: string; password: string }) => {
     setIsLoading(true);
     dispatch(setAuthModal());

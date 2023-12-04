@@ -1,16 +1,12 @@
 import { useState, type FC } from "react";
-import { Form, Modal, Input, Divider, Button, notification, Space } from "antd";
+import { Form, Input, Divider, Button, notification, Space } from "antd";
 import {
   FacebookOutlined,
   GoogleOutlined,
-  ScanOutlined,
   LoadingOutlined,
 } from "@ant-design/icons";
 import { useSignIn } from "react-auth-kit";
-import {
-  useReduxDispatch,
-  useReduxSelector,
-} from "../../../../../hooks/useRedux";
+import { useReduxDispatch } from "../../../../../hooks/useRedux";
 import {
   setAuthModal,
   setGoogleVerification,
@@ -20,21 +16,27 @@ import { signInWithGoogle } from "../../../../../config";
 
 type NotificationType = "success" | "info";
 
+interface RegisterType {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+}
+
 const Register: FC = () => {
   const signIn = useSignIn();
   const dispatch = useReduxDispatch();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [api, contextHolder] = notification.useNotification();
-  const { authModal } = useReduxSelector((state) => state.modal);
-  const onFinish = (evt: { email: string; password: string }) => {
+  const onFinish = (evt: RegisterType) => {
     dispatch(setAuthModal());
     setIsLoading(true);
     axios({
-      url: "https://greenshop.abduvoitov.com/api/user/sign-in",
+      url: "https://greenshop.abduvoitov.com/api/user/sign-up",
       method: "POST",
       data: evt,
       params: {
-        access_token: "6519a32b5bf6635ccba4f9ad",
+        access_token: "https://greenshop.abduvoitov.com/api/user/sign-up",
       },
     }).then((res) => {
       signIn({
@@ -44,6 +46,7 @@ const Register: FC = () => {
         authState: res.data.data.user,
       });
     });
+    dispatch(setAuthModal());
     setIsLoading(false);
   };
   const openNotificationInfo = (type: NotificationType) => {
